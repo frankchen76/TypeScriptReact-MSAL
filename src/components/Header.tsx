@@ -26,6 +26,9 @@ export class Header extends React.Component<IHeaderProps, {}> {
                     <li className="ms-Grid-col">
                         <Link to="/users">Users</Link>
                     </li>
+                    <li className="ms-Grid-col">
+                        <Link to="/uploadfile">UploadFile</Link>
+                    </li>
                 </ul>
                 <div>{this.props.account}</div>
             </div>

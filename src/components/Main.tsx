@@ -5,6 +5,7 @@ import { MyTimer } from "./MyTimer";
 import { About } from "./About";
 import { User } from "./User";
 import { Home } from "./Home";
+import { UploadFile } from "./UploadFile";
 import { Header } from "./Header";
 import { AuthProvider2 } from "../msal/AuthProvider";
 import {
@@ -42,6 +43,9 @@ export class Main extends React.Component<IMainProps, {}>{
                                 </Route>
                                 <Route path="/users">
                                     <User />
+                                </Route>
+                                <Route path="/uploadfile">
+                                    <UploadFile />
                                 </Route>
                                 <Route path="/">
                                     <Home />
