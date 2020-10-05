@@ -46,9 +46,28 @@ export class UploadFile extends React.Component<{}, IUploadFileState> {
         reader.readAsText(file);
 
     }
-    private _fileUploadHandler = () => {
-        console.log("test");
+    private _fileDownloadHandler = () => {
+        var xmlSample = '<?xml version="1.0" encoding="utf-8"?><xmlelem1>this is test</xmlelem1>';
+        // below code used Data URI, but it doesn't work well from my Edge browser.
+        // window.open('data:Application/octet-stream,' + encodeURIComponent(xmlSample));
+
+        // below code used traditional JS approach and should work. 
+        var fileName = "updated.xml";
+        var fileType = '.xml';
+
+        var blob = new Blob([xmlSample], { type: fileType });
+
+        var a = document.createElement('a');
+        a.download = fileName;
+        a.href = URL.createObjectURL(blob);
+        a.dataset.downloadurl = [fileType, a.download, a.href].join(':');
+        a.style.display = "none";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(function () { URL.revokeObjectURL(a.href); }, 1500);
     }
+
     private _testHandler() {
 
     }
@@ -69,7 +88,7 @@ export class UploadFile extends React.Component<{}, IUploadFileState> {
                                 <input type="file" name="file" className="form-control" onChange={this._onChangeHandler} />
                             </div>
                             <div className="col-md-6 pull-right">
-                                <PrimaryButton text="Upload" onClick={this._fileUploadHandler} />
+                                <PrimaryButton text="Download" onClick={this._fileDownloadHandler} />
                             </div>
                         </form>
                     </div>

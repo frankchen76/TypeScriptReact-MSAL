@@ -9,7 +9,8 @@ import { UploadFile } from "./UploadFile";
 import { Header } from "./Header";
 import { AuthProvider2 } from "../msal/AuthProvider";
 import {
-    BrowserRouter as Router,
+    BrowserRouter,
+    HashRouter,
     Switch,
     Route,
     Link
@@ -26,7 +27,7 @@ export class Main extends React.Component<IMainProps, {}>{
             width: "800px"
         };
         return (
-            <Router>
+            <HashRouter>
                 <div className="ms-Grid" style={style}>
                     {/* A <Switch> looks through its children <Route>s and
                 renders the first one that matches the current URL. */}
@@ -54,7 +55,7 @@ export class Main extends React.Component<IMainProps, {}>{
                         </div>
                     </div>
                 </div>
-            </Router>
+            </HashRouter>
         );
     }
 }
